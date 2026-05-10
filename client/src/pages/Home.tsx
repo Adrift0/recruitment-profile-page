@@ -4,7 +4,9 @@ Design philosophy for this file: Executive cloud-identity command center. Preser
 import {
   ArrowUpRight,
   BriefcaseBusiness,
+  Building2,
   Cloud,
+  FileDown,
   Linkedin,
   Lock,
   Mail,
@@ -20,6 +22,7 @@ import {
 } from "lucide-react";
 
 const headshot = "/manus-storage/jason-headshot_bc28959f.png";
+const cvDownload = "/manus-storage/JasonAlebord-ITCV_dda695e3.docx";
 const linkedInUrl = "https://www.linkedin.com/in/jason-alebord-72ba68126";
 
 const certifications = ["AZ-104", "AZ-500", "SC-300", "MS-102", "MS-700", "CCNA", "A+"];
@@ -106,6 +109,33 @@ const roles = [
   "T2 / T3 Entry Point Welcome",
 ];
 
+const experience = [
+  {
+    company: "AC4S Technologies and Contract MSPs",
+    role: "Cloud Identity and Endpoint Management Engineer | Tier 3 Technical Specialist and Project Lead",
+    dates: "Jan 2025 – Feb 2026",
+    copy: "Led identity modernization and endpoint transformation across client environments, remediated unhealthy domains and domain controllers, engineered Azure tenant transition paths, and served as senior escalation authority for authentication, identity, and device issues.",
+  },
+  {
+    company: "Chadwell Supply",
+    role: "IT Support Manager, Modern Workplace and Endpoint Operations",
+    dates: "Jul 2021 – Nov 2024",
+    copy: "Managed enterprise endpoint operations, identity-driven support, infrastructure, and M365 administration for a fast-growing organization of more than 3,200 employees while supporting a 99.7% SLA adherence rate through structured workflows and metrics.",
+  },
+  {
+    company: "Jackson Hewitt National Headquarters",
+    role: "Senior Technical Support Specialist, Identity and Application Services",
+    dates: "2009 – 2021",
+    copy: "Resolved high-tier identity, authentication, and proprietary application issues, authored more than 230 knowledge base articles, and trained more than 90 employees annually for advanced support and red-alert teams.",
+  },
+  {
+    company: "SouthTech / Persistent Web Design",
+    role: "Systems Support Specialist and Digital Technology Consultant",
+    dates: "2015 – Present",
+    copy: "Supported Azure, M365, on-premises systems, backup administration, tenant administration, cloud endpoint reliability, and responsive website design with ongoing hosting and digital content work.",
+  },
+];
+
 function ToneIcon({ icon: Icon, tone }: { icon: LucideIcon; tone: string }) {
   const styles: Record<string, string> = {
     blue: "bg-electric/15 text-electric ring-electric/25",
@@ -137,9 +167,14 @@ export default function Home() {
             <a className="transition hover:text-electric" href="#impact">Impact</a>
             <a className="transition hover:text-electric" href="#contact">Contact</a>
           </nav>
-          <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-electric/40 bg-electric/15 px-4 py-2 text-sm font-bold text-electric transition hover:-translate-y-0.5 hover:bg-electric/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric">
-            <Linkedin className="size-4" /> LinkedIn
-          </a>
+          <div className="flex items-center gap-2">
+            <a href={cvDownload} download className="hidden min-h-11 items-center gap-2 rounded-full border border-teal/40 bg-teal/15 px-4 py-2 text-sm font-bold text-teal transition hover:-translate-y-0.5 hover:bg-teal/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal sm:inline-flex">
+              <FileDown className="size-4" /> CV
+            </a>
+            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-electric/40 bg-electric/15 px-4 py-2 text-sm font-bold text-electric transition hover:-translate-y-0.5 hover:bg-electric/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric">
+              <Linkedin className="size-4" /> LinkedIn
+            </a>
+          </div>
         </div>
       </header>
 
@@ -180,6 +215,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a href="tel:9417350731" className="profile-pill border-teal/40 bg-teal/15 text-teal hover:bg-teal/25"><Phone className="size-4" /> 941-735-0731</a>
               <a href="mailto:jason.alebord@outlook.com" className="profile-pill border-electric/40 bg-electric/15 text-electric hover:bg-electric/25"><Mail className="size-4" /> jason.alebord@outlook.com</a>
+              <a href={cvDownload} download className="profile-pill border-teal/40 bg-teal/15 text-teal hover:bg-teal/25"><FileDown className="size-4" /> Download CV</a>
               <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="profile-pill border-electric/40 bg-electric/15 text-electric hover:bg-electric/25"><Linkedin className="size-4" /> LinkedIn</a>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-2.5 lg:justify-start">
@@ -210,6 +246,26 @@ export default function Home() {
             <p className="mt-5 text-lg leading-8 text-slate-300">Skilled in Azure Entra ID, Intune, SCCM, Conditional Access, device compliance, Autopilot, hybrid identity, and Microsoft’s security stack. Known for transforming support organizations, remediating unhealthy domains, engineering clean migration paths, and elevating team performance through structured leadership and technical depth.</p>
             <p className="mt-5 text-lg leading-8 text-slate-300">Recognized as a senior escalation authority, modernization catalyst, and trusted engineer for complex identity, endpoint, and security challenges across SMB, MSP, and enterprise environments.</p>
             <p className="mt-6 border-l-4 border-electric pl-5 text-lg font-semibold italic leading-8 text-electric">Leadership is not a career aspiration separate from engineering — it is how I have always worked.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" className="px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <p className="section-label text-electric">CV-Backed Experience</p>
+          <div className="mt-10 grid gap-5">
+            {experience.map((item) => (
+              <article key={item.company} className="rounded-[1.6rem] border border-white/10 bg-slate-800/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-electric/35 md:grid md:grid-cols-[0.72fr_1.28fr] md:gap-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-electric/25 bg-electric/10 px-3 py-1.5 text-xs font-bold text-electric">
+                    <Building2 className="size-3.5" /> {item.dates}
+                  </div>
+                  <h3 className="mt-4 text-2xl font-black tracking-[-0.035em] text-white">{item.company}</h3>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-teal">{item.role}</p>
+                </div>
+                <p className="mt-5 text-base leading-7 text-slate-300 md:mt-0">{item.copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -278,6 +334,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href="tel:9417350731" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-teal px-7 py-3 text-base font-black text-white transition hover:-translate-y-1 hover:bg-teal/90 sm:w-auto"><Phone className="size-5" /> Call or Text: 941-735-0731</a>
             <a href="mailto:jason.alebord@outlook.com" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-electric px-7 py-3 text-base font-black text-white transition hover:-translate-y-1 hover:bg-electric/90 sm:w-auto"><Mail className="size-5" /> Email Jason</a>
+            <a href={cvDownload} download className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-7 py-3 text-base font-black text-white transition hover:-translate-y-1 hover:bg-white/15 sm:w-auto"><FileDown className="size-5" /> Download CV</a>
           </div>
           <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm text-slate-300 transition hover:text-electric"><Linkedin className="size-4" /> Connect on LinkedIn — linkedin.com/in/jason-alebord-72ba68126 <ArrowUpRight className="size-4" /></a>
         </div>
