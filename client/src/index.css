@@ -1,5 +1,5 @@
 /*
-Design philosophy for this file: Swiss International Typographic Style interpreted as a modern technical dossier. Maintain precise typography, asymmetry, thin rules, off-white paper texture, carbon ink, restrained signal-blue accents, and professional recruiter readability.
+Design philosophy for this file: Executive cloud-identity command center. Maintain dark navy depth, Microsoft-cloud blue, security teal, compliance amber, sharp recruiter readability, and restrained glow effects.
 */
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -43,79 +43,73 @@ Design philosophy for this file: Swiss International Typographic Style interpret
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-paper: var(--paper);
-  --color-ink: var(--ink);
-  --color-steel: var(--steel);
-  --color-signal: var(--signal);
-  --color-signal-light: var(--signal-light);
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-electric: var(--electric);
+  --color-teal: var(--teal);
+  --color-amber: var(--amber);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --paper: oklch(0.971 0.012 88);
-  --ink: oklch(0.17 0.022 248);
-  --steel: oklch(0.46 0.024 248);
-  --signal: oklch(0.49 0.18 254);
-  --signal-light: oklch(0.78 0.13 244);
-  --primary: var(--signal);
-  --primary-foreground: oklch(0.99 0.006 88);
-  --sidebar-primary: var(--signal);
-  --sidebar-primary-foreground: oklch(0.99 0.006 88);
-  --chart-1: oklch(0.78 0.13 244);
-  --chart-2: oklch(0.62 0.17 251);
-  --chart-3: oklch(0.49 0.18 254);
-  --chart-4: oklch(0.38 0.13 252);
-  --chart-5: oklch(0.28 0.08 248);
-  --radius: 0.08rem;
-  --background: var(--paper);
-  --foreground: var(--ink);
-  --card: oklch(1 0 0 / 78%);
-  --card-foreground: var(--ink);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--ink);
-  --secondary: oklch(0.94 0.01 88);
-  --secondary-foreground: var(--ink);
-  --muted: oklch(0.92 0.01 88);
-  --muted-foreground: var(--steel);
-  --accent: oklch(0.93 0.028 245);
-  --accent-foreground: var(--ink);
-  --destructive: oklch(0.577 0.245 27.325);
+  --electric: oklch(0.62 0.20 255);
+  --teal: oklch(0.70 0.13 184);
+  --amber: oklch(0.77 0.16 72);
+  --primary: var(--electric);
+  --primary-foreground: oklch(0.99 0.005 250);
+  --sidebar-primary: var(--electric);
+  --sidebar-primary-foreground: oklch(0.99 0.005 250);
+  --chart-1: var(--electric);
+  --chart-2: var(--teal);
+  --chart-3: var(--amber);
+  --chart-4: oklch(0.52 0.16 255);
+  --chart-5: oklch(0.52 0.12 184);
+  --radius: 1.15rem;
+  --background: oklch(0.13 0.032 255);
+  --foreground: oklch(0.93 0.016 250);
+  --card: oklch(0.21 0.035 255);
+  --card-foreground: oklch(0.93 0.016 250);
+  --popover: oklch(0.19 0.035 255);
+  --popover-foreground: oklch(0.93 0.016 250);
+  --secondary: oklch(0.25 0.035 255);
+  --secondary-foreground: oklch(0.93 0.016 250);
+  --muted: oklch(0.25 0.035 255);
+  --muted-foreground: oklch(0.69 0.035 250);
+  --accent: oklch(0.24 0.06 255);
+  --accent-foreground: oklch(0.96 0.012 250);
+  --destructive: oklch(0.64 0.22 28);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.17 0.022 248 / 16%);
-  --input: oklch(0.17 0.022 248 / 18%);
-  --ring: var(--signal);
-  --sidebar: var(--paper);
-  --sidebar-foreground: var(--ink);
-  --sidebar-accent: oklch(0.93 0.028 245);
-  --sidebar-accent-foreground: var(--ink);
-  --sidebar-border: oklch(0.17 0.022 248 / 16%);
-  --sidebar-ring: var(--signal);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--electric);
+  --sidebar: oklch(0.15 0.032 255);
+  --sidebar-foreground: oklch(0.93 0.016 250);
+  --sidebar-accent: oklch(0.24 0.06 255);
+  --sidebar-accent-foreground: oklch(0.96 0.012 250);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: var(--electric);
 }
 
 .dark {
-  --background: oklch(0.17 0.022 248);
-  --foreground: oklch(0.94 0.01 88);
-  --card: oklch(0.22 0.023 248);
-  --card-foreground: oklch(0.94 0.01 88);
-  --popover: oklch(0.22 0.023 248);
-  --popover-foreground: oklch(0.94 0.01 88);
-  --secondary: oklch(0.27 0.025 248);
-  --secondary-foreground: oklch(0.94 0.01 88);
-  --muted: oklch(0.27 0.025 248);
-  --muted-foreground: oklch(0.72 0.025 248);
-  --accent: oklch(0.28 0.045 250);
-  --accent-foreground: oklch(0.94 0.01 88);
+  --background: oklch(0.13 0.032 255);
+  --foreground: oklch(0.93 0.016 250);
+  --card: oklch(0.21 0.035 255);
+  --card-foreground: oklch(0.93 0.016 250);
+  --popover: oklch(0.19 0.035 255);
+  --popover-foreground: oklch(0.93 0.016 250);
+  --secondary: oklch(0.25 0.035 255);
+  --secondary-foreground: oklch(0.93 0.016 250);
+  --muted: oklch(0.25 0.035 255);
+  --muted-foreground: oklch(0.69 0.035 250);
+  --accent: oklch(0.24 0.06 255);
+  --accent-foreground: oklch(0.96 0.012 250);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
-  --ring: var(--signal-light);
-  --sidebar: oklch(0.19 0.022 248);
-  --sidebar-foreground: oklch(0.94 0.01 88);
-  --sidebar-accent: oklch(0.27 0.025 248);
-  --sidebar-accent-foreground: oklch(0.94 0.01 88);
+  --ring: var(--electric);
+  --sidebar: oklch(0.15 0.032 255);
+  --sidebar-foreground: oklch(0.93 0.016 250);
+  --sidebar-accent: oklch(0.24 0.06 255);
+  --sidebar-accent-foreground: oklch(0.96 0.012 250);
   --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: var(--signal-light);
+  --sidebar-ring: var(--electric);
 }
 
 @layer base {
@@ -130,13 +124,6 @@ Design philosophy for this file: Swiss International Typographic Style interpret
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
-  }
-
-  h1,
-  h2,
-  h3,
-  .font-display {
-    font-family: var(--font-display);
   }
 
   button:not(:disabled),
@@ -166,31 +153,17 @@ Design philosophy for this file: Swiss International Typographic Style interpret
     min-width: 0;
   }
 
-  .section-kicker {
-    font-family: var(--font-mono);
-    @apply text-[0.72rem] font-bold uppercase tracking-[0.28em] text-steel;
+  .section-label {
+    @apply text-center text-sm font-black uppercase tracking-[0.22em];
   }
 
-  .nav-link {
-    @apply relative transition-colors duration-300 hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal;
-  }
-
-  .nav-link::after {
+  .section-label::after {
     content: "";
-    @apply absolute -bottom-1 left-0 h-px w-0 bg-signal transition-all duration-300;
+    @apply mx-auto mt-4 block h-0.5 w-16 rounded-full bg-current opacity-80;
   }
 
-  .nav-link:hover::after {
-    @apply w-full;
-  }
-
-  .status-chip {
-    @apply inline-flex items-center gap-2 border border-paper/30 bg-paper/10 px-3 py-1.5 font-mono text-[0.67rem] font-bold uppercase tracking-[0.18em] text-paper backdrop-blur;
-  }
-
-  .status-dot {
-    @apply size-2 rounded-full bg-signal-light shadow-[0_0_18px_rgba(86,166,255,0.9)];
-    animation: pulse-dot 2.5s ease-in-out infinite;
+  .profile-pill {
+    @apply inline-flex min-h-11 items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric;
   }
 
   @media (min-width: 640px) {
@@ -206,17 +179,6 @@ Design philosophy for this file: Swiss International Typographic Style interpret
       padding-right: 2rem;
       max-width: 1280px;
     }
-  }
-}
-
-@keyframes pulse-dot {
-  0%, 100% {
-    opacity: 0.72;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.35);
   }
 }
 

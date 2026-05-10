@@ -1,176 +1,294 @@
 /*
-Design philosophy for this file: Swiss International Typographic Style interpreted as a modern technical dossier. Preserve the asymmetric recruiter-facing layout, precise section numbering, thin rules, restrained signal-blue accents, and fast-scanning professional hierarchy.
+Design philosophy for this file: Executive cloud-identity command center. Preserve the uploaded page's dark Microsoft-cloud engineering tone while improving recruiter scan speed, credibility, and mobile readability. Use the corrected LinkedIn URL and hosted headshot asset throughout.
 */
-import { ArrowUpRight, CheckCircle2, ClipboardList, ExternalLink, Mail, MonitorCog, ShieldCheck, TerminalSquare, Wrench } from "lucide-react";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Cloud,
+  Linkedin,
+  Lock,
+  Mail,
+  MapPin,
+  Monitor,
+  Phone,
+  Server,
+  Settings,
+  Shield,
+  ShieldCheck,
+  Terminal,
+  type LucideIcon,
+} from "lucide-react";
 
-const heroImage = "https://d2xsxph8kpxj0f.cloudfront.net/310519663639644044/S7EEqxJt3w3Jtz6eccr8Wr/jason-dossier-hero-P9YywfcAteQMtdoeaDpeBk.webp";
-const textureImage = "https://d2xsxph8kpxj0f.cloudfront.net/310519663639644044/S7EEqxJt3w3Jtz6eccr8Wr/dossier-grid-texture-mLe7zLAF7yDqUpQS7RgaEu.webp";
-const capabilityImage = "https://d2xsxph8kpxj0f.cloudfront.net/310519663639644044/S7EEqxJt3w3Jtz6eccr8Wr/capability-panel-abstract-Ym9Wr8e7zXKuhasM9Be5nC.webp";
+const headshot = "/manus-storage/jason-headshot_bc28959f.png";
+const linkedInUrl = "https://www.linkedin.com/in/jason-alebord-72ba68126";
 
-const capabilities = [
+const certifications = ["AZ-104", "AZ-500", "SC-300", "MS-102", "MS-700", "CCNA", "A+"];
+
+const impactStats = [
+  ["18", "Years Experience"],
+  ["20+", "Domain Migrations Led"],
+  ["1,200+", "Endpoints Under Management"],
+  ["900+", "Inactive Agents Remediated"],
+  ["8", "Compliance Frameworks"],
+];
+
+const competencies = [
   {
-    icon: MonitorCog,
-    title: "Endpoint & desktop support",
-    copy: "Practical troubleshooting for Windows environments, browser configuration, device settings, and day-to-day user productivity blockers.",
+    icon: Lock,
+    tone: "blue",
+    title: "Identity & Access Engineering",
+    copy: "Azure Entra ID · PIM · Conditional Access · Hybrid Identity Architecture · SSO & Federation · Identity Lifecycle Governance · Access Reviews · Entitlement Management",
   },
   {
-    icon: TerminalSquare,
-    title: "Automation mindset",
-    copy: "Comfortable using scripts, structured checklists, and repeatable workflows to reduce manual effort and improve consistency.",
+    icon: Monitor,
+    tone: "teal",
+    title: "Endpoint Engineering & MDM",
+    copy: "Intune · Autopilot · SCCM · Co-Management · Win32 App Deployment · Patch Compliance · Device Hardening · Endpoint Baselines",
+  },
+  {
+    icon: Cloud,
+    tone: "blue",
+    title: "Cloud & Modern Workplace",
+    copy: "Azure Infrastructure · M365 Administration · SharePoint & OneDrive · SaaS Integration · Zero Trust Alignment · Cloud Migration Planning · Azure VM Deployments",
   },
   {
     icon: ShieldCheck,
-    title: "Operational reliability",
-    copy: "Clear documentation, careful change handling, and a steady approach to resolving issues without adding unnecessary complexity.",
+    tone: "amber",
+    title: "Microsoft Security Stack",
+    copy: "Defender for Endpoint · Defender for Identity · Defender for Office 365 · Microsoft Purview · Secure Score Optimization · Threat Analytics",
   },
   {
-    icon: Wrench,
-    title: "Hands-on problem solving",
-    copy: "A pragmatic IT profile oriented around diagnosing root causes, communicating clearly, and getting systems back to usable condition.",
+    icon: Server,
+    tone: "teal",
+    title: "Active Directory & Infrastructure",
+    copy: "Active Directory Architecture · Domain Controller Hardening · Domain Health Remediation · Group Policy Modernization · Replication Troubleshooting · Fortinet · SonicWALL · Meraki",
+  },
+  {
+    icon: Terminal,
+    tone: "blue",
+    title: "Automation & Scripting",
+    copy: "PowerShell · Python · Bash · Microsoft Graph API · Log & Telemetry Analysis · RCA & Incident Leadership · Automated Identity & Endpoint Remediation",
   },
 ];
 
-const profilePoints = [
-  "IT professional profile prepared for recruiters and hiring managers.",
-  "Clear emphasis on support readiness, technical troubleshooting, and user-focused service.",
-  "Shareable one-page format designed for quick review before interviews or screening calls.",
+const compliance = ["CMMC", "PCI DSS", "NIST CSF", "ISO 27001", "SOX", "HIPAA", "GDPR", "NIS2"];
+
+const impacts = [
+  {
+    icon: Settings,
+    border: "border-l-electric",
+    title: "Restored Enterprise Automation at Scale",
+    copy: "Identified and remediated 900+ inactive agents across client servers and endpoints. Repaired broken Windows patching affecting 1,200+ computers, restoring compliance, OS stability, and security. Improved patch success rates by over 75% through custom scripting solutions.",
+  },
+  {
+    icon: Cloud,
+    border: "border-l-teal",
+    title: "Led 20+ Domain Migrations to Azure Entra & Intune",
+    copy: "Executed domain structure, firewall stability, and Group Policy cleanup across 20+ client environments. Achieved a 45% reduction in authentication errors while strengthening security posture across SSO and API integrations.",
+  },
+  {
+    icon: Shield,
+    border: "border-l-amber",
+    title: "Security Expert — Forensics & Compliance",
+    copy: "Assigned as the security expert for cyber threats and intrusion cases. Performed forensic analysis through Microsoft Purview, Microsoft Graph, Azure, and firewall logs, delivering reports to state, federal, and SEC-affiliated firms.",
+  },
 ];
 
-const evidence = [
-  ["Focus", "IT support, endpoint troubleshooting, workflow improvement"],
-  ["Signal", "Reliable, practical, documentation-minded"],
-  ["Best fit", "Help desk, desktop support, junior systems support, technical operations"],
-  ["Availability", "Open to recruitment conversations"],
+const roles = [
+  "IT Manager",
+  "Team Lead",
+  "Cloud Operations Lead",
+  "Infrastructure Lead",
+  "Systems Engineer",
+  "Sr. Cloud Engineer",
+  "Identity & Access Engineer",
+  "IT Director (Growth Path)",
+  "T2 / T3 Entry Point Welcome",
 ];
+
+function ToneIcon({ icon: Icon, tone }: { icon: LucideIcon; tone: string }) {
+  const styles: Record<string, string> = {
+    blue: "bg-electric/15 text-electric ring-electric/25",
+    teal: "bg-teal/15 text-teal ring-teal/25",
+    amber: "bg-amber/15 text-amber ring-amber/25",
+  };
+  return (
+    <div className={`grid size-11 place-items-center rounded-2xl ring-1 ${styles[tone] ?? styles.blue}`}>
+      <Icon className="size-5" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <section className="relative isolate min-h-screen">
-        <div
-          className="absolute inset-0 -z-20 opacity-55"
-          style={{ backgroundImage: `url(${textureImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
-        />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(247,246,241,0.98)_0%,rgba(247,246,241,0.9)_48%,rgba(247,246,241,0.72)_100%)]" />
+    <main className="min-h-screen bg-[#08101f] text-slate-100 selection:bg-electric/30 selection:text-white">
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(59,130,246,0.22),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(20,184,166,0.18),transparent_30%),linear-gradient(180deg,#08101f_0%,#0f172a_55%,#08101f_100%)]" />
+      <div className="fixed inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.7)_1px,transparent_1px)] [background-size:48px_48px]" />
 
-        <header className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-          <a href="#top" className="group flex items-center gap-3" aria-label="Jason Alebord profile home">
-            <span className="grid size-10 place-items-center border border-ink/20 bg-paper text-xs font-black tracking-[0.22em] text-ink shadow-[4px_4px_0_#0b5cad] transition-transform duration-300 group-hover:-translate-y-0.5">JA</span>
-            <span className="hidden text-[0.68rem] font-bold uppercase tracking-[0.32em] text-steel sm:block">Recruitment Dossier</span>
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#08101f]/78 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+          <a href="#top" className="flex items-center gap-3" aria-label="Jason Alebord profile home">
+            <span className="grid size-10 place-items-center rounded-2xl border border-electric/40 bg-electric/10 text-sm font-black text-electric shadow-[0_0_24px_rgba(59,130,246,0.18)]">JA</span>
+            <span className="hidden text-xs font-bold uppercase tracking-[0.22em] text-slate-300 sm:block">Cloud Identity Profile</span>
           </a>
-          <nav className="hidden items-center gap-7 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ink/70 md:flex" aria-label="Profile sections">
-            <a className="nav-link" href="#profile">Profile</a>
-            <a className="nav-link" href="#capabilities">Capabilities</a>
-            <a className="nav-link" href="#contact">Contact</a>
+          <nav className="hidden items-center gap-7 text-xs font-semibold text-slate-400 md:flex" aria-label="Profile navigation">
+            <a className="transition hover:text-electric" href="#summary">Summary</a>
+            <a className="transition hover:text-electric" href="#competencies">Competencies</a>
+            <a className="transition hover:text-electric" href="#impact">Impact</a>
+            <a className="transition hover:text-electric" href="#contact">Contact</a>
           </nav>
-          <a href="mailto:?subject=Recruitment%20inquiry%20for%20Jason%20Alebord" className="inline-flex items-center gap-2 border border-ink bg-ink px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-paper transition duration-300 hover:-translate-y-0.5 hover:bg-signal hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal">
-            Inquiry <ArrowUpRight className="size-3.5" />
+          <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-electric/40 bg-electric/15 px-4 py-2 text-sm font-bold text-electric transition hover:-translate-y-0.5 hover:bg-electric/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric">
+            <Linkedin className="size-4" /> LinkedIn
           </a>
-        </header>
+        </div>
+      </header>
 
-        <div id="top" className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-10 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:px-10 lg:pb-24 lg:pt-16">
+      <section id="top" className="relative overflow-hidden px-5 py-16 sm:px-8 md:py-24 lg:px-10">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <aside className="order-2 lg:order-1">
-            <div className="sticky top-8 border-l border-ink/20 pl-5 lg:pl-7">
-              <p className="section-kicker">Candidate File</p>
-              <div className="mt-8 space-y-7">
-                {evidence.map(([label, value]) => (
-                  <div key={label} className="border-t border-ink/15 pt-4">
-                    <dt className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-steel">{label}</dt>
-                    <dd className="mt-2 max-w-xs text-sm leading-6 text-ink/80">{value}</dd>
+            <div className="relative mx-auto w-full max-w-sm">
+              <div className="absolute -inset-5 rounded-[2.5rem] bg-[conic-gradient(from_180deg,rgba(59,130,246,0.35),rgba(20,184,166,0.25),rgba(245,158,11,0.18),rgba(59,130,246,0.35))] blur-2xl" />
+              <div className="relative rounded-[2rem] border border-white/12 bg-white/[0.045] p-5 shadow-2xl backdrop-blur-xl">
+                <img src={headshot} alt="Headshot of Jason Alebord" className="mx-auto aspect-square w-56 rounded-full border border-white/15 object-cover shadow-[0_0_48px_rgba(59,130,246,0.18)] sm:w-64" />
+                <div className="mt-6 space-y-4 text-center">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-4 py-2 text-sm font-semibold text-amber">
+                    <span className="size-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.9)]" /> Available Now — Actively Interviewing
                   </div>
-                ))}
-              </div>
-              <div className="mt-9 border border-ink/15 bg-white/55 p-5 shadow-[12px_12px_0_rgba(11,92,173,0.08)] backdrop-blur">
-                <div className="flex items-start gap-3">
-                  <ClipboardList className="mt-1 size-5 text-signal" />
-                  <p className="text-sm leading-6 text-ink/78">This page was rebuilt as a standalone recruitment profile so it can be shared outside the original Copilot artifact wrapper.</p>
+                  <div className="grid grid-cols-2 gap-3 text-left">
+                    <div className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+                      <p className="text-2xl font-black text-white">18</p>
+                      <p className="text-xs text-slate-400">Years in IT</p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+                      <p className="text-2xl font-black text-white">20+</p>
+                      <p className="text-xs text-slate-400">Migrations</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </aside>
 
-          <section className="order-1 lg:order-2">
-            <div className="relative overflow-hidden border border-ink/15 bg-ink text-paper shadow-[18px_18px_0_rgba(11,92,173,0.12)]">
-              <img src={heroImage} alt="Abstract technical operations workspace with server infrastructure and precision grid lines" className="absolute inset-0 h-full w-full object-cover opacity-70" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,13,20,0.94)_0%,rgba(8,13,20,0.88)_42%,rgba(8,13,20,0.28)_100%)]" />
-              <div className="relative min-h-[620px] px-6 py-8 sm:px-10 sm:py-12 lg:px-14 lg:py-16">
-                <div className="mb-16 flex flex-wrap items-center gap-3">
-                  <span className="status-chip"><span className="status-dot" /> Open to conversations</span>
-                  <span className="status-chip border-paper/20 text-paper/70">IT Professional</span>
-                </div>
-                <p className="font-mono text-xs uppercase tracking-[0.34em] text-signal-light">Jason Alebord</p>
-                <h1 className="mt-5 max-w-3xl text-5xl font-black uppercase leading-[0.92] tracking-[-0.07em] text-paper sm:text-7xl lg:text-8xl">Technical support profile for recruitment review.</h1>
-                <p className="mt-8 max-w-2xl text-lg leading-8 text-paper/78 sm:text-xl">A concise, recruiter-facing profile for an IT professional focused on practical troubleshooting, endpoint support, documentation, and reliable user-centered problem solving.</p>
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                  <a href="#profile" className="inline-flex items-center justify-center gap-2 bg-paper px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-ink transition duration-300 hover:-translate-y-1 hover:bg-signal hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper">Review profile <ArrowUpRight className="size-4" /></a>
-                  <a href="#contact" className="inline-flex items-center justify-center gap-2 border border-paper/35 px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-paper transition duration-300 hover:-translate-y-1 hover:border-signal-light hover:text-signal-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper">Recruiter contact <Mail className="size-4" /></a>
-                </div>
-              </div>
+          <div className="order-1 text-center lg:order-2 lg:text-left">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-electric">Jason Alebord</p>
+            <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl">Cloud Identity & Endpoint Management Engineer</h1>
+            <p className="mt-6 max-w-3xl text-xl font-medium leading-8 text-slate-300">IT Manager & Operations Leader based in St. Petersburg, FL, with eighteen years delivering enterprise infrastructure, identity governance, and cloud modernization.</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-4 text-sm text-slate-300 lg:justify-start">
+              <span className="inline-flex items-center gap-2"><MapPin className="size-4 text-electric" /> St. Petersburg, FL</span>
+              <span className="inline-flex items-center gap-2"><Monitor className="size-4 text-electric" /> On-site · Hybrid · Remote US</span>
             </div>
-          </section>
-        </div>
-      </section>
-
-      <section id="profile" className="border-y border-ink/15 bg-paper px-5 py-20 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="section-kicker">01 / Profile</p>
-            <h2 className="mt-4 max-w-xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.055em] text-ink sm:text-6xl">Built for clear, fast hiring decisions.</h2>
-          </div>
-          <div className="grid gap-5">
-            {profilePoints.map((point) => (
-              <div key={point} className="group flex gap-4 border-t border-ink/15 pt-5">
-                <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-signal transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-lg leading-8 text-ink/78">{point}</p>
-              </div>
-            ))}
-            <blockquote className="mt-6 border-l-4 border-signal bg-white/65 p-6 text-xl font-semibold leading-8 text-ink shadow-sm">
-              “A recruitment page should reduce friction: who this person is, what they can help with, and how to start a conversation.”
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      <section id="capabilities" className="bg-ink px-5 py-20 text-paper sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <p className="section-kicker text-signal-light">02 / Capability Map</p>
-            <h2 className="mt-4 max-w-2xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.055em] sm:text-6xl">Practical IT strengths, presented without noise.</h2>
-            <div className="mt-10 grid gap-px border border-white/15 bg-white/15 sm:grid-cols-2">
-              {capabilities.map((item) => (
-                <article key={item.title} className="group bg-ink p-6 transition duration-300 hover:bg-[#101a27]">
-                  <item.icon className="size-6 text-signal-light" />
-                  <h3 className="mt-8 text-xl font-bold tracking-[-0.025em] text-paper">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-paper/68">{item.copy}</p>
-                </article>
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+              <a href="tel:9417350731" className="profile-pill border-teal/40 bg-teal/15 text-teal hover:bg-teal/25"><Phone className="size-4" /> 941-735-0731</a>
+              <a href="mailto:jason.alebord@outlook.com" className="profile-pill border-electric/40 bg-electric/15 text-electric hover:bg-electric/25"><Mail className="size-4" /> jason.alebord@outlook.com</a>
+              <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="profile-pill border-electric/40 bg-electric/15 text-electric hover:bg-electric/25"><Linkedin className="size-4" /> LinkedIn</a>
+            </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+              {certifications.map((cert) => (
+                <span key={cert} className="rounded-xl border border-electric/45 bg-slate-800/80 px-4 py-2 text-xs font-black tracking-[0.16em] text-white shadow-[0_0_14px_rgba(59,130,246,0.15)]">{cert}</span>
               ))}
             </div>
           </div>
-          <div className="relative min-h-[460px] overflow-hidden border border-white/15 bg-white/5">
-            <img src={capabilityImage} alt="Abstract capability panel showing diagnostic systems, status lights, and infrastructure modules" className="h-full min-h-[460px] w-full object-cover" />
-            <div className="absolute bottom-0 left-0 right-0 border-t border-white/15 bg-ink/86 p-5 backdrop-blur-md">
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-signal-light">Recruiter scan summary</p>
-              <p className="mt-2 text-sm leading-6 text-paper/75">A compact page for sharing in applications, messages, and screening workflows.</p>
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-[linear-gradient(135deg,rgba(20,184,166,0.08),rgba(59,130,246,0.08))] px-5 py-10 sm:px-8 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:grid-cols-5">
+          {impactStats.map(([value, label]) => (
+            <div key={label} className="bg-[#0b1424]/90 p-6 text-center">
+              <p className="text-4xl font-black text-white md:text-5xl">{value}</p>
+              <p className="mt-2 text-sm font-medium text-slate-400">{label}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="summary" className="px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-4xl">
+          <p className="section-label text-teal">Professional Summary</p>
+          <div className="mt-10 rounded-[2rem] border border-white/10 bg-slate-800/70 p-6 shadow-2xl md:p-10">
+            <p className="text-lg leading-8 text-slate-300">Cloud Identity and Endpoint Management Engineer with eighteen years of experience modernizing enterprise environments, strengthening identity governance, and leading high-impact technical operations.</p>
+            <p className="mt-5 text-lg leading-8 text-slate-300">Skilled in Azure Entra ID, Intune, SCCM, Conditional Access, device compliance, Autopilot, hybrid identity, and Microsoft’s security stack. Known for transforming support organizations, remediating unhealthy domains, engineering clean migration paths, and elevating team performance through structured leadership and technical depth.</p>
+            <p className="mt-5 text-lg leading-8 text-slate-300">Recognized as a senior escalation authority, modernization catalyst, and trusted engineer for complex identity, endpoint, and security challenges across SMB, MSP, and enterprise environments.</p>
+            <p className="mt-6 border-l-4 border-electric pl-5 text-lg font-semibold italic leading-8 text-electric">Leadership is not a career aspiration separate from engineering — it is how I have always worked.</p>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="relative bg-paper px-5 py-20 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="section-kicker">03 / Contact</p>
-            <h2 className="mt-4 text-4xl font-black uppercase leading-[0.95] tracking-[-0.055em] text-ink sm:text-6xl">Ready to share.</h2>
-          </div>
-          <div className="border border-ink/15 bg-white/70 p-6 shadow-[14px_14px_0_rgba(11,92,173,0.08)] sm:p-8">
-            <p className="max-w-2xl text-lg leading-8 text-ink/78">Use this hosted page as the profile link in recruitment messages, job applications, and outreach. Contact details can be added when you provide an email address, LinkedIn URL, phone number, résumé link, or any role-specific details you want displayed.</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="mailto:?subject=Recruitment%20inquiry%20for%20Jason%20Alebord" className="inline-flex items-center justify-center gap-2 bg-ink px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-paper transition duration-300 hover:-translate-y-1 hover:bg-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal">Start email <Mail className="size-4" /></a>
-              <a href="#top" className="inline-flex items-center justify-center gap-2 border border-ink/20 px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-ink transition duration-300 hover:-translate-y-1 hover:border-signal hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal">Back to top <ExternalLink className="size-4" /></a>
-            </div>
+      <section id="competencies" className="px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="section-label text-teal">Core Competencies</p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {competencies.map((item) => (
+              <article key={item.title} className="group rounded-[1.6rem] border border-white/10 bg-slate-800/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-electric/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.12)]">
+                <ToneIcon icon={item.icon} tone={item.tone} />
+                <h3 className="mt-5 text-xl font-bold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">{item.copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
+
+      <section className="border-y border-amber/10 bg-[linear-gradient(135deg,rgba(245,158,11,0.06),rgba(59,130,246,0.05))] px-5 py-16 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="section-label text-amber">Compliance Frameworks Delivered</p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {compliance.map((item) => (
+              <span key={item} className="rounded-xl border border-amber/45 bg-slate-800/80 px-5 py-2.5 text-sm font-black tracking-[0.12em] text-amber shadow-[0_0_14px_rgba(245,158,11,0.12)]">{item}</span>
+            ))}
+          </div>
+          <p className="mt-8 text-sm leading-6 text-slate-400">Delivered across SMB, MSP, healthcare, financial services, government, and enterprise environments.</p>
+        </div>
+      </section>
+
+      <section id="impact" className="px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="section-label text-teal">Featured Impact</p>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {impacts.map((item) => (
+              <article key={item.title} className={`rounded-[1.6rem] border border-white/10 border-l-4 ${item.border} bg-slate-800/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20`}>
+                <ToneIcon icon={item.icon} tone={item.border.includes("teal") ? "teal" : item.border.includes("amber") ? "amber" : "blue"} />
+                <h3 className="mt-5 text-xl font-bold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-16 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="section-label text-teal">Open to Opportunities</p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {roles.map((role) => (
+              <span key={role} className={`rounded-full border px-5 py-2.5 text-sm font-semibold ${role.includes("T2") ? "border-teal/40 bg-teal/15 text-teal" : "border-electric/40 bg-electric/15 text-white"}`}>{role}</span>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-slate-400">Available for on-site, hybrid, or remote US positions. Open to contract or direct hire.</p>
+        </div>
+      </section>
+
+      <section id="contact" className="px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-3xl rounded-[2rem] border border-electric/30 bg-[linear-gradient(135deg,rgba(59,130,246,0.16),rgba(20,184,166,0.13))] p-8 text-center shadow-[0_0_80px_rgba(59,130,246,0.09)] md:p-12">
+          <div className="mx-auto grid size-16 place-items-center rounded-3xl border border-white/10 bg-white/10 text-electric">
+            <BriefcaseBusiness className="size-7" />
+          </div>
+          <h2 className="mt-6 text-4xl font-black tracking-[-0.04em] text-white">Let’s Connect</h2>
+          <p className="mt-4 text-lg leading-8 text-slate-300">I’m actively interviewing and available for a conversation this week.</p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href="tel:9417350731" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-teal px-7 py-3 text-base font-black text-white transition hover:-translate-y-1 hover:bg-teal/90 sm:w-auto"><Phone className="size-5" /> Call or Text: 941-735-0731</a>
+            <a href="mailto:jason.alebord@outlook.com" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-electric px-7 py-3 text-base font-black text-white transition hover:-translate-y-1 hover:bg-electric/90 sm:w-auto"><Mail className="size-5" /> Email Jason</a>
+          </div>
+          <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm text-slate-300 transition hover:text-electric"><Linkedin className="size-4" /> Connect on LinkedIn — linkedin.com/in/jason-alebord-72ba68126 <ArrowUpRight className="size-4" /></a>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 px-5 py-8 text-center sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm text-slate-500">Jason Alebord · St. Petersburg, FL · Cloud Identity & Endpoint Management Engineer</p>
+          <p className="mt-1 text-xs text-slate-600">© 2026 — Profile shared for professional networking purposes.</p>
+        </div>
+      </footer>
     </main>
   );
 }
