@@ -30,7 +30,7 @@ const certifications = ["AZ-104", "AZ-500", "SC-300", "MS-102", "MS-700", "CCNA"
 const impactStats = [
   ["18", "Years Experience"],
   ["20+", "Domain Migrations Led"],
-  ["1,200+", "Endpoints Under Management"],
+  ["10,200+", "Endpoints Under Management"],
   ["900+", "Inactive Agents Remediated"],
   ["8", "Compliance Frameworks"],
 ];
