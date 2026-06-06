@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm ci
@@ -26,16 +26,12 @@ jobs:
       - name: Build production
         run: npm run build
         env:
-          # If you use any build-time secrets, set them as repo secrets and map here
-          # EXAMPLE: VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          # Remove or edit the env block if not needed
           NODE_ENV: production
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist/public
           publish_branch: gh-pages
-          # optional: keep history by not forcing; remove if you want force push
           force_orphan: false
