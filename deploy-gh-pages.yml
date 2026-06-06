@@ -1,3 +1,4 @@
+
 name: Build and deploy to gh-pages
 
 on:
@@ -35,3 +36,4 @@ jobs:
           publish_dir: ./dist/public
           publish_branch: gh-pages
           force_orphan: false
+          -
