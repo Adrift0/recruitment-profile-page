@@ -1,5 +1,4 @@
 <!-- rebuild trigger -->
-
 name: Build and deploy to gh-pages
 
 on:
